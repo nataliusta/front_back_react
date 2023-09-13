@@ -23,7 +23,7 @@ import HomePage from './pages/HomePage';
 import EditEventPage from './pages/EditEventPage';
 import EventDetailPage from './pages/EventDetailPage';
 import NewEventPage from './pages/NewEventPagePage';
-import EventsPage from './pages/EventsPage';
+import EventsPage, { loader as eventsLoader } from './pages/EventsPage';
 import Root from './pages/Root';
 import EventsRoot from './pages/EventsRoot';
 
