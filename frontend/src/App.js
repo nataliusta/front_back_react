@@ -26,26 +26,20 @@ import NewEventPage from './pages/NewEventPagePage';
 import EventsPage, { loader as eventsLoader } from './pages/EventsPage';
 import Root from './pages/Root';
 import EventsRoot from './pages/EventsRoot';
+import Error from './pages/Error';
 
 const router = createBrowserRouter([
   { 
     path: '/', 
     element: <Root />,
+    errorElement: <Error />,
     children: [
       { index: true, element: <HomePage /> },
       { path: 'events', 
       element: <EventsRoot />,
       children: [
-          { index: true, element: <EventsPage />, loader: async () => {
-              const response = await fetch('http://localhost:8080/events');
-
-              if (!response.ok) {
-                // ...
-              } else {
-                const resData = await response.json();
-                return resData.events;
-              }
-            },
+          { index: true, element: <EventsPage />, 
+            loader: eventsLoader;
           },
           { path: ':eventId', element: <EventDetailPage /> },
           { path: 'new', element: <NewEventPage /> },
